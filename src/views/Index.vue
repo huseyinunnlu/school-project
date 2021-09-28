@@ -1,9 +1,6 @@
 <template>
     <div>
-        <h1>
-            Test
-            <button class="btn btn-primary"></button>
-        </h1>
+        index
     </div>
 </template>
 <script>

@@ -1,18 +1,17 @@
 <template>
   <div class="hold-transition register-page">
-    <div>
-      <div class="register-box">
+    <div class="pt-2">
+      <div class="register-box py-2">
         <div class="register-logo">
-          <a href="../../index2.html"><b>Mod</b>Hub</a>
+          <router-link :to="{name:'Index'}"><b>Mod</b>Hub</router-link>
         </div>
 
         <div class="card">
           <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
-
             <RegisterForm />
             <SocialRegister />
-
+            
             <router-link :to="{name:'Login'}" class="text-center"
               >I already have a membership</router-link
             >
@@ -28,6 +27,7 @@
 <script>
 import RegisterForm from "@/components/Auth/RegisterForm.vue";
 import SocialRegister from "@/components/Auth/SocialRegister.vue";
+
 export default {
   components: {
     RegisterForm,

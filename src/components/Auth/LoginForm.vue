@@ -46,7 +46,7 @@
   </form>
 </template>
 <script>
-import CryptoJs from "crypto-js";
+import CryptoJS from "crypto-js";
 //import {mapGetters} from "vuex"
 export default {
   data() {
@@ -62,22 +62,26 @@ export default {
   methods: {
     login() {
       this.isLoading = true;
-      let cryptedPass = CryptoJs.SHA256(this.form.password).toString();
+      let cryptedPass = CryptoJS.SHA256(this.form.password).toString();
       this.$appAxios
         .post("/login", {
           email: this.form.email,
           password: cryptedPass,
         })
-        .then(res=> {
+        .then((res) => {
           this.$notify({
             type: "success",
             title: "Successfully Signed In redirecting",
           });
-          this.form.email = null
-          this.form.password = null
-          this.$store.state.User.user = res.data.user
-          localStorage.setItem('token',res.data.token.token)
-          this.$router.push({name:'Index'})
+          this.form.email = null;
+          this.form.password = null;
+          this.$store.state.User.user = res.data.user;
+          var encryptedToken = CryptoJS.AES.encrypt(
+            res.data.token.token,
+            "vuexisawesomesecret"
+          ).toString();
+          localStorage.setItem("token", encryptedToken);
+          this.$router.push({ name: "Index" });
         })
         .catch((err) => {
           this.error = err.response.data.error;

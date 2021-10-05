@@ -23,7 +23,7 @@ const routes = [
   //Adminpanel Routes
 ]
 
-// router.beforeEach(()=>{
+//  router.beforeEach(()=>{
   
 // })
 

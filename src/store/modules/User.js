@@ -6,9 +6,11 @@
 export default {
   state: {
     user: [],
+    isAuth: false,
   },
   getters: {
 		_User: (state) => state.user,
+		_IsAuth: (state) => state.isAuth,
   },
   actions: {},
   mutations: {},

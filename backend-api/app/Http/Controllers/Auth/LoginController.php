@@ -29,4 +29,17 @@ class LoginController extends Controller
             'error' => 'Email and password not matched'
         ], 401);
     }
+
+    public function logout(Request $request)
+    {
+        if (Auth::check()) {
+            Auth::user()->authUserToken()->delete();
+            return response()->json([
+                'message' => 'success logout'
+            ],200);
+        }
+        return response()->json([
+            'error' => 'Unouthorized'
+        ], 401);
+    }
 }

@@ -1,5 +1,6 @@
 <template>
   <div>
+    index
     <button v-if="_IsAuth" @click="logout" class="btn btn-primary">
       Logout
     </button>

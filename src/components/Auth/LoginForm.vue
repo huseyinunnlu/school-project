@@ -76,6 +76,7 @@ export default {
           this.form.email = null;
           this.form.password = null;
           this.$store.state.User.user = res.data.user;
+          this.$store.state.User.isAuth = true;
           var encryptedToken = CryptoJS.AES.encrypt(
             res.data.token.token,
             "vuexisawesomesecret"

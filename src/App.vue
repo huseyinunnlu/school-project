@@ -8,7 +8,7 @@
       <span> <b>Mod</b>Hub </span>
     </div>
     <div v-else>
-      <router-view :key="$route.fullPath"/>
+      <router-view :key="$route.fullPath" />
       <notifications class="my-3 mx-4" />
     </div>
   </div>
@@ -32,11 +32,12 @@ export default {
           .then((res) => {
             this.$store.state.User.user = res.data;
             this.$store.state.User.isAuth = true;
+            localStorage.setItem("perm", res.data.type);
           })
           .catch(() => {
             this.$store.state.User.user = [];
             this.$store.state.User.isAuth = false;
-
+            localStorage.setItem("perm", null);
             localStorage.setItem("token", null);
           })
           .finally(() => {
@@ -45,6 +46,7 @@ export default {
       } else {
         this.$store.User.state.user = [];
         localStorage.setItem("token", null);
+        localStorage.setItem("perm", null);
       }
     },
   },

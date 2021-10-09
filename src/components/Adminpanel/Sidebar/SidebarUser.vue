@@ -1,8 +1,27 @@
 <template>
-  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-    <div class="image"></div>
-    <div class="info">
-      <a href="#" class="d-block">Alexander Pierce</a>
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+    <div class="image">
+      <img
+        :src="_User.profilePhoto"
+        class="img-circle elevation-2"
+        alt="User Image"
+      />
+    </div>
+    <div class="info d-flex flex-column">
+      <a href="#" class="d-block">{{_User.fullName}}</a>
+      <Logout />
     </div>
   </div>
 </template>
+<script>
+import Logout from "@/components/Auth/Logout.vue"
+import { mapGetters } from "vuex";
+export default {
+  components:{
+    Logout
+  },
+  computed: {
+    ...mapGetters(["_User"]),
+  },
+};
+</script>

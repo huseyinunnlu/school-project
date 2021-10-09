@@ -82,6 +82,8 @@ export default {
             "vuexisawesomesecret"
           ).toString();
           localStorage.setItem("token", encryptedToken);
+          localStorage.setItem("perm", res.data.user.type);
+          window.location.reload()
           this.$router.push({ name: "Index" });
         })
         .catch((err) => {
@@ -90,6 +92,7 @@ export default {
             type: "error",
             title: "Didn't Signed In.",
           });
+          localStorage.setItem("perm", null);
         })
         .finally(() => {
           this.isLoading = false;

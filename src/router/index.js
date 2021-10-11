@@ -42,7 +42,7 @@ const routes = [
     }
   },
   {
-    path: "/u/settings",
+    path: "/user/settings",
     name: "ProfileSettings",
     component: () => import("../views/Profile/ProfileSettings.vue"),
     beforeEnter: (_, from, next) => {

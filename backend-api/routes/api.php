@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Profile\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,5 +26,7 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout']);
-
+    Route::post('/getuser', [ProfileController::class, 'getUser']);
+    Route::post('/updateprofile', [ProfileController::class, 'updateProfile']);
+    Route::post('/updateprofilephoto', [ProfileController::class, 'updateProfilePhoto']);
 });

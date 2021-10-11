@@ -8,14 +8,13 @@
           <div class="container-fluid">
             <div class="row py-4">
               <div class="col-md-3">
-                <UserProfile />
-                <UserAbout />
+                <UserProfile :_User="this.$store.getters._User"/>
+                <UserAbout :_User="this.$store.getters._User"/>
               </div>
               <div class="col-md-9">
                 <div class="card">
-                  <UserNavbar />
-                  <UserSettings />
-                  asdas
+                  <UserNavbar :username="this.$store.getters._User.username"/>
+                  <UserSettings :_User="this.$store.getters._User"/>
                 </div>
               </div>
             </div>

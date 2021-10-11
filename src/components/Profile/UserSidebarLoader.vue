@@ -1,20 +1,18 @@
 <template>
+  <div class="card card-primary card-outline">
+    <div class="card-body box-profile">
+      <h2 class="text-center">Loading...</h2>
+    </div>
+    <!-- /.card-body -->
+  </div>
   <div class="card card-primary">
     <div class="card-header">
       <h3 class="card-title">About Me</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <p class="text-muted" v-html="_User.bio"></p>
+      <h2 class="text-center">Loading...</h2>
     </div>
     <!-- /.card-body -->
   </div>
 </template>
-<script>
-import { mapGetters } from "vuex";
-export default {
-  computed: {
-    ...mapGetters(["_User"]),
-  },
-};
-</script>

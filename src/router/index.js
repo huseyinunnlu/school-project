@@ -6,6 +6,12 @@ const perm = localStorage.getItem("perm");
 const routes = [
   //Index Routes
   {
+    path: "/404",
+    name: "404",
+    component: () => import("../views/404.vue"),
+  },
+
+  {
     path: "/",
     name: "Index",
     component: () => import("../views/Index.vue"),
@@ -39,7 +45,7 @@ const routes = [
       } else {
         router.push({ name: "Index" });
       }
-    }
+    },
   },
   {
     path: "/user/settings",
@@ -52,7 +58,7 @@ const routes = [
         router.push({ name: "Index" });
       }
     },
-  }
+  },
 ];
 
 const router = createRouter({
@@ -65,7 +71,9 @@ router.beforeEach((to, _, next) => {
   const authRoutes = ["Register", "Login"];
   const adminRoutes = ["AdminIndex"];
   //const authReqRoutes = ["Profile"];
-  if (authRoutes.indexOf(to.name) > -1 && token != "null") {
+  if (!to.matched.length) {
+    router.push({ name: "404" });
+  } else if (authRoutes.indexOf(to.name) > -1 && token != "null") {
     router.push({ name: "Index" });
   } else if (adminRoutes.indexOf(to.name) > -1 && perm == "0") {
     router.push({ name: "Login" });

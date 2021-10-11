@@ -80,7 +80,7 @@ export default {
           this.user = res.data;
         })
         .catch(() => {
-          this.$router.push({ name: "Index" });
+          this.$router.push({ name: "404" });
         })
         .finally(() => {
           this.isLoading = false;

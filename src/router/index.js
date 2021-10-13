@@ -35,6 +35,19 @@ const routes = [
     name: "AdminIndex",
     component: () => import("../views/Adminpanel/Index.vue"),
   },
+
+  //User Adding Routes
+
+  {
+    path: "/users",
+    name: "AdminUser",
+    component: () => import("../views/Adminpanel/User/AdminUser.vue"),
+  },
+
+  //Admin Routues finish
+
+  //Profile Routes
+
   {
     path: "/u/:username",
     name: "Profile",
@@ -69,7 +82,7 @@ const router = createRouter({
 //is auth middleware
 router.beforeEach((to, _, next) => {
   const authRoutes = ["Register", "Login"];
-  const adminRoutes = ["AdminIndex"];
+  const adminRoutes = ["AdminIndex",'AdminUser'];
   //const authReqRoutes = ["Profile"];
   if (!to.matched.length) {
     router.push({ name: "404" });

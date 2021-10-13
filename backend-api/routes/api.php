@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,6 +28,10 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout']);
     Route::post('/getuser', [ProfileController::class, 'getUser']);
-    Route::post('/updateprofile', [ProfileController::class, 'updateProfile']);
+    Route::post('/updateprofile', [ProwfileController::class, 'updateProfile']);
     Route::post('/updateprofilephoto', [ProfileController::class, 'updateProfilePhoto']);
+    Route::post('/getuser', [ProfileController::class, 'getUser']);
+    Route::post('/user/add', [UserController::class, 'store']);
+    Route::get('/user/get', [UserController::class, 'get']);
+
 });

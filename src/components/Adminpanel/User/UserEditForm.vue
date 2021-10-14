@@ -105,7 +105,8 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label"></label>
       <div class="col-sm-10">
-        <button type="submit" class="btn btn-success btn-sm">Update</button>
+        <button v-if="!isLoading" type="submit" class="btn btn-success btn-sm">Update</button>
+        <button v-else disabled type="submit" class="btn btn-success btn-sm">Updating...</button>
       </div>
     </div>
   </form>

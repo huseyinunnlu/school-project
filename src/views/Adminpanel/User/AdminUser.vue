@@ -6,7 +6,7 @@
       <div class="content-wrapper py-4">
           <div class="row">
               <div class="col-10 offset-1">
-                  <UserListHeader />
+                  <ContentHeader :title="'Users'"/>
                   <UserList />
               </div>
           </div>
@@ -20,7 +20,7 @@ import Navbar from "@/components/Adminpanel/Header/Navbar.vue";
 import Sidebar from "@/components/Adminpanel/Sidebar/Sidebar.vue";
 import Footer from "@/components/Adminpanel/Header/Footer.vue";
 import UserList from "@/components/Adminpanel/User/UserList.vue";
-import UserListHeader from "@/components/Adminpanel/User/UserListHeader.vue";
+import ContentHeader from "@/components/Adminpanel/ContentHeader.vue";
 
 export default {
   components: {
@@ -28,7 +28,7 @@ export default {
     Sidebar,
     Footer,
     UserList,
-    UserListHeader,
+    ContentHeader,
   },
 };
 </script>

@@ -45,9 +45,8 @@
                     <option :value="'100'">100</option>
                   </select>
                   <select class="form-control" v-model="sort">
-                    <option :value="null">Sort</option>
                     <option :value="'desc'">Creating Date DESC</option>
-                    <option :value="'asd'">Creating Date ASC</option>
+                    <option :value="'asc'">Creating Date ASC</option>
                   </select>
                   <div class="input-group-append">
                     <button @click="getUsers" type="submit" class="btn btn-default">

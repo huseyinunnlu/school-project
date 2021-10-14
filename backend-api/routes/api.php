@@ -26,12 +26,22 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware(['auth:api'])->group(function () {
+    //Logout
     Route::post('/logout', [LoginController::class, 'logout']);
+    //Get user for token control
     Route::post('/getuser', [ProfileController::class, 'getUser']);
-    Route::post('/updateprofile', [ProwfileController::class, 'updateProfile']);
+    //Profile updating
+    Route::post('/updateprofile', [ProfileController::class, 'updateProfile']);
     Route::post('/updateprofilephoto', [ProfileController::class, 'updateProfilePhoto']);
     Route::post('/getuser', [ProfileController::class, 'getUser']);
-    Route::post('/user/add', [UserController::class, 'store']);
+    //User listing for admins
     Route::get('/user/get', [UserController::class, 'get']);
+    //User adding for admins
+    Route::post('/user/add', [UserController::class, 'store']);
+    //User delete
+    Route::delete('/user/{id}/delete', [UserController::class, 'delete']);
+    //User updating
+    Route::get('/user/{id}/get', [UserController::class, 'getUser']);
+    Route::post('/user/update', [UserController::class, 'update']);
 
 });

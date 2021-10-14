@@ -43,7 +43,11 @@ const routes = [
     name: "AdminUser",
     component: () => import("../views/Adminpanel/User/AdminUser.vue"),
   },
-
+  {
+    path: "/users/:id/edit",
+    name: "UserEdit",
+    component: () => import("../views/Adminpanel/User/UserEdit.vue"),
+  },
   //Admin Routues finish
 
   //Profile Routes

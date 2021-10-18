@@ -1,14 +1,18 @@
 <template>
-  <div>
-    index
-    <Logout />
-  </div>
+  <Header />
+  <body>
+    <div class="container">
+      <div class="row">
+        body
+      </div>
+    </div>
+  </body>
 </template>
 <script>
-import Logout from  "@/components/Auth/Logout.vue"
+import Header from "@/components/Header/Header.vue";
 export default {
-  components:{
-    Logout
-  }
-}
+  components: {
+    Header,
+  },
+};
 </script>

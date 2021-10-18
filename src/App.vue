@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     getUser() {
-      if (localStorage.getItem("token")) {
-        this.isLoading = true;
+      this.isLoading = true;
+      if (localStorage.getItem("token") != '') {
         this.$appAxios
           .get("user")
           .then((res) => {
@@ -37,17 +37,19 @@ export default {
           .catch(() => {
             this.$store.state.User.user = [];
             this.$store.state.User.isAuth = false;
-            localStorage.setItem("perm", null);
-            localStorage.setItem("token", null);
+            this.$router.push({name:'Index'})
+            localStorage.setItem("perm", '');
+            localStorage.setItem("token", '');
           })
           .finally(() => {
             this.isLoading = false;
           });
       } else {
-        this.$store.User.state.user = [];
-        localStorage.setItem("token", null);
-        localStorage.setItem("perm", null);
+        this.$store.state.User.user = [];
+        localStorage.setItem("token", '');
+        localStorage.setItem("perm", '');
       }
+      this.isLoading = false;
     },
   },
 };

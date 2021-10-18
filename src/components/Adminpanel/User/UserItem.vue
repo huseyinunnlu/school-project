@@ -16,7 +16,7 @@
         ><i class="fas fa-pen"></i
       ></router-link>
       <router-link
-        :to="{ name: 'UserEdit', params: { id: user.username } }"
+        :to="{ name: 'Profile', params: { username: user.username } }"
         class="btn btn-primary btn-sm"
         ><i class="fas fa-eye"></i
       ></router-link>

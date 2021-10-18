@@ -39,15 +39,23 @@ const routes = [
   //User Adding Routes
 
   {
-    path: "/users",
+    path: "/dashboard/users",
     name: "AdminUser",
     component: () => import("../views/Adminpanel/User/AdminUser.vue"),
   },
   {
-    path: "/users/:id/edit",
+    path: "/dashboard/users/:id/edit",
     name: "UserEdit",
     component: () => import("../views/Adminpanel/User/UserEdit.vue"),
   },
+
+  //Settings
+  {
+    path: "/dashboard/settings",
+    name: "Settings",
+    component: () => import("../views/Adminpanel/Settings.vue"),
+  },
+
   //Admin Routues finish
 
   //Profile Routes
@@ -57,7 +65,7 @@ const routes = [
     name: "Profile",
     component: () => import("../views/Profile/Profile.vue"),
     beforeEnter: (_, from, next) => {
-      if (token != "null") {
+      if (token != "") {
         next();
       } else {
         router.push({ name: "Index" });
@@ -69,7 +77,7 @@ const routes = [
     name: "ProfileSettings",
     component: () => import("../views/Profile/ProfileSettings.vue"),
     beforeEnter: (_, from, next) => {
-      if (token != "null") {
+      if (token != "") {
         next();
       } else {
         router.push({ name: "Index" });
@@ -86,14 +94,14 @@ const router = createRouter({
 //is auth middleware
 router.beforeEach((to, _, next) => {
   const authRoutes = ["Register", "Login"];
-  const adminRoutes = ["AdminIndex",'AdminUser'];
+  const adminRoutes = ["AdminIndex", "AdminUser", "Settings"];
   //const authReqRoutes = ["Profile"];
   if (!to.matched.length) {
     router.push({ name: "404" });
-  } else if (authRoutes.indexOf(to.name) > -1 && token != "null") {
+  } else if (authRoutes.indexOf(to.name) > -1 && token != "") {
     router.push({ name: "Index" });
-  } else if (adminRoutes.indexOf(to.name) > -1 && perm == "0") {
-    router.push({ name: "Login" });
+  } else if (adminRoutes.indexOf(to.name) > -1 && perm != "1") {
+    router.push({ name: "Index" });
   } else {
     next();
   }

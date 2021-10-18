@@ -1,13 +1,13 @@
 <template>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <router-link :to="{name:'AdminIndex'}" class="brand-link">
-      <span class="brand-text font-weight-light">ModHub</span>
+    <router-link :to="{ name: 'AdminIndex' }" class="brand-link">
+      <span class="brand-text font-weight-light">ModHub </span>
     </router-link>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <SidebarUser />
+      <SidebarUser v-if="$store.getters._User.username"/>
       <nav class="mt-2">
         <ul
           class="nav nav-pills nav-sidebar flex-column"
@@ -20,13 +20,23 @@
           <div class="admin-pages" v-if="$store.getters._User.type == '1'">
             <li class="nav-header">Admin Pages</li>
             <li class="nav-item">
-              <router-link :to="{name:'AdminUser'}" class="nav-link">
+              <router-link :to="{ name: 'AdminUser' }" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                   Users
                 </p>
               </router-link>
             </li>
+
+            <li class="nav-item">
+              <router-link :to="{ name: 'Settings' }" class="nav-link">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Settings
+                </p>
+              </router-link>
+            </li>
+
           </div>
           <div class="admin-pages">
             <li class="nav-header">User Pages</li>

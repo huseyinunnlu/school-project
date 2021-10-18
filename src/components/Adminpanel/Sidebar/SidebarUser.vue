@@ -15,7 +15,7 @@
 </template>
 <script>
 import Logout from "@/components/Auth/Logout.vue"
-import { mapGetters } from "vuex";
+import { mapGetters } from "vuex"; 
 export default {
   components:{
     Logout
